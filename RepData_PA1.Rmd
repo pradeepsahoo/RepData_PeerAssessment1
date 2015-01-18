@@ -12,7 +12,7 @@ Show any code that is needed to
 2. Process/transform the data (if necessary) into a format suitable for your analysis
 ```{r}
 library(ggplot2)
-setwd("C:/pradeep_sahoo_jda/JH-Data-Science-Course\working_dir/Reproducible_Research_assignment/")
+setwd("https://github.com/pradeepsahoo/RepData_PeerAssessment1/blob/master/")
 unzip("activity.zip")
 df <- read.csv("activity.csv")
 df$date <- as.Date(df$date)
