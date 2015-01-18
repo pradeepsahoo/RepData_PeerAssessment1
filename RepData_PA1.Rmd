@@ -1,13 +1,15 @@
 ---
-title: "test"
-author: "PS"
+title: "Reproducible Research: Peer Assessment 1"
+author: "Coursera Assignment"
 date: "Sunday, January 18, 2015"
 output: html_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+##Loading and preprocessing the data
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+1. Show any code that is needed to Load the data (i.e. read.csv())
+
+2. Process/transform the data (if necessary) into a format suitable for your analysis
 
 ```{r}
 library(ggplot2)
@@ -20,21 +22,21 @@ df$date <- as.Date(df$date)
 
 ## What is mean total number of steps taken per day?
 For this part of the assignment, you can ignore the missing values in the dataset.
-Make a histogram of the total number of steps taken each day
+1. Make a histogram of the total number of steps taken each day
 
 
 ```{r, echo=TRUE}
 df.completecases <- na.omit(df)
 
-steps.by.day <- aggregate(steps ~ date, data=df.completecases, FUN=sum)
-ggplot(steps.by.day, aes(x=steps)) +
+stepsByday <- aggregate(steps ~ date, data=df.completecases, FUN=sum)
+ggplot(stepsByday, aes(x=steps)) +
     geom_histogram(binwidth=2500, colour="black", fill="yellow")
 ```
 
 2. Calculate and report the mean and median total number of steps taken per day
 ```{r, echo=TRUE}
-mean(steps.by.day$steps)
-median(steps.by.day$steps)
+mean(stepsByday$steps)
+median(stepsByday$steps)
 ```
 
 What is the average daily activity pattern?
@@ -73,8 +75,8 @@ df.new$steps[is.na(df.new$steps)] <- mean(na.omit(df$steps))
 
 4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 ```{r}
-steps.by.day.new <- aggregate(steps ~ date, data=df.new, FUN=sum)
-ggplot(steps.by.day.new, aes(x=steps)) +
+stepsByday.new <- aggregate(steps ~ date, data=df.new, FUN=sum)
+ggplot(stepsByday.new, aes(x=steps)) +
     geom_histogram(binwidth=2500, colour="black", fill="yellow")
 ```
 Ans: Imputing values did not change the mean and slightly increased median.
@@ -97,5 +99,4 @@ steps.new <- aggregate(steps ~ interval + day, data=df.new, FUN=mean)
 ggplot(steps.new, aes(x=interval, y=steps, group=1)) + geom_line() +
     facet_wrap(~ day, ncol=1)
 ```
-
 
