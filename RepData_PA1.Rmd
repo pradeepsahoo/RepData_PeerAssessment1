@@ -1,0 +1,33 @@
+---
+title: "Reproducible Research: Peer Assessment 1"
+date: "Sunday, January 18, 2015"
+output: 
+  html_document:
+    keep_md: true
+---
+
+## Loading and preprocessing the data
+Show any code that is needed to
+1. Load the data (i.e. read.csv())
+2. Process/transform the data (if necessary) into a format suitable for your analysis
+```{r}
+library(ggplot2)
+setwd("C:/pradeep_sahoo_jda/JH-Data-Science-Course\working_dir/Reproducible_Research_assignment/")
+unzip("activity.zip")
+df <- read.csv("activity.csv")
+df$date <- as.Date(df$date)
+```
+
+## What is mean total number of steps taken per day?
+
+
+
+## What is the average daily activity pattern?
+
+
+
+## Imputing missing values
+
+
+
+## Are there differences in activity patterns between weekdays and weekends?
